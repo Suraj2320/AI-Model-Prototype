@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import "../client/src/index.css"; // Import global styles including Tailwind
+import "@/index.css"; // Import global styles including Tailwind
 
 const preview: Preview = {
   parameters: {
@@ -11,18 +11,18 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-        default: 'light',
-        values: [
-          {
-            name: 'light',
-            value: '#ffffff',
-          },
-          {
-            name: 'dark',
-            value: '#0f172a', // slate-900
-          },
-        ],
-      },
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: '#ffffff',
+        },
+        {
+          name: 'dark',
+          value: '#0f172a', // slate-900
+        },
+      ],
+    },
   },
 };
 
