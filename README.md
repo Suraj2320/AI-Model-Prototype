@@ -36,6 +36,16 @@ A polished, frontend-only prototype of an AI chat interface built with React, Ty
 -   **Chat Message (AI)**: `bg-muted/30`
 -   **Input Area**: `bg-background border border-input rounded-xl shadow-sm`
 
+### Design & Screenshots
+#### Desktop (Light Mode)
+![Desktop Light](client/public/screenshots/desktop-light.png)
+
+#### Desktop (Dark Mode)
+![Desktop Dark](client/public/screenshots/desktop-dark.png)
+
+#### Mobile View
+![Mobile](client/public/screenshots/mobile.png)
+
 ## Development
 
 ### Tech Stack
