@@ -1,0 +1,151 @@
+
+Pasted--AI-Interface-Frontend-Assessment-Complete-Build-Prompt_1764928415109.txt
+# AI Interface Frontend Assessment - Complete Build Prompt
+
+## Project Overview
+Build a polished, frontend-only prototype of an AI chat interface (similar to ChatGPT, Claude, Gemini) that showcases modern UI/UX design and React/TypeScript development skills.
+
+## Tech Stack (REQUIRED)
+- **Framework**: Next.js OR React.js (functional components only)
+- **Language**: TypeScript with strict mode enabled
+- **Styling**: Tailwind CSS
+- **Deployment**: Netlify, Vercel, or GitHub Pages
+
+---
+
+## Phase 1: Research & Planning
+
+### AI Platforms to Review (Choose 3-5)
+- OpenAI Playground
+- Hugging Face Spaces
+- Anthropic Claude UI
+- Microsoft Copilot Lab
+- Google Gemini
+- Perplexity AI
+- Any other AI chat interface
+
+### Research Documentation (for README)
+For each platform reviewed, write **1-2 sentences** summarizing:
+- What makes their interface intuitive
+- Key standout features you noticed
+- Any unique interaction patterns
+
+### Feature Selection
+Choose **4-6 features** from your research to implement. Examples:
+- Model/temperature selection
+- Conversation history sidebar
+- Copy/regenerate response buttons
+- Syntax highlighting for code
+- Streaming text effect
+- Token counter
+- Export conversation
+- Prompt templates/examples
+
+---
+
+## Phase 2: Design (Figma/Adobe XD)
+
+### Create Mockups for:
+1. **Desktop view** (1440px width)
+2. **Tablet view** (768px width)
+3. **Mobile view** (375px width)
+
+### Design System Using Tailwind
+Document your choices:
+- **Color Palette**: 
+  - Light mode: background, text, accent colors
+  - Dark mode: background, text, accent colors
+- **Typography**: Font families, sizes (text-sm, text-base, text-lg, etc.)
+- **Spacing**: Consistent padding/margin values (p-4, m-6, etc.)
+- **Component Styles**: Buttons, inputs, cards, etc.
+
+### Map Tailwind Tokens
+For each mockup element, specify the exact Tailwind classes you'll use:
+- Example: "Header uses `bg-gray-900 text-white p-4 shadow-lg`"
+
+### Design Section in README
+Include a "Design" section explaining:
+- Your design decisions and why
+- How Tailwind tokens map to mockup elements
+- Screenshots or links to Figma/XD files
+
+---
+
+## Phase 3: Development
+
+### Required Components
+
+#### 1. Model Selector
+```typescript
+// Dropdown or sidebar to pick among "models"
+// Examples: GPT-3.5, GPT-4, Claude, Gemini (dummy names OK)
+interface Model {
+  id: string;
+  name: string;
+  description?: string;
+}
+```
+
+#### 2. Prompt Editor
+```typescript
+// Text area with:
+// - Save/load templates (dummy JSON data)
+// - Clear button
+// - Character/token counter (optional)
+// - Placeholder text
+```
+
+#### 3. Control Panel
+```typescript
+// Sliders/inputs for parameters:
+interface Parameters {
+  temperature: number; // 0-1 or 0-2
+  maxTokens: number;   // e.g., 100-4000
+  topP?: number;       // optional
+}
+```
+
+#### 4. Chat/Output Area
+```typescript
+// Displays prompt + response
+// Features:
+// - "Copy" button for responses
+// - "Reload" button to regenerate
+// - Include dummy "JSON" actions in response
+// - Support markdown formatting
+// - Code syntax highlighting (use a library like react-syntax-highlighter)
+
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+}
+```
+
+#### 5. Theme Toggle
+```typescript
+// Light/dark mode switch
+// Persist choice in localStorage
+// Use Tailwind's dark: modifier
+```
+
+#### 6. Responsive Layout
+```typescript
+// Mobile: stacked layout, hamburger menu
+// Tablet: side panel collapses
+// Desktop: full sidebar + main area
+```
+
+#### 7. Data & State Management
+```typescript
+// Fetch "models" and "templates" from mock API
+// Can use:
+// - /pages/api route in Next.js with dummy JSON
+// - /public/data.json file
+// - Local state with dummy data
+
+// Display loading/error states with proper UI feedback
+```
+
+---
