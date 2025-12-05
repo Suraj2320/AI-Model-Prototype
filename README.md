@@ -174,11 +174,3 @@ If needed, I can provide:
 - 📄 **Project presentation PDF for interview**
 - 🌍 **Deployment setup**
 
----
-
-### 💬 Want Figma design or Next.js version?
-Just say:  
-➡ **"Generate Figma design now"**  
-or  
-➡ **"Convert this project to Next.js"**
-
