@@ -60,8 +60,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  render: (args) => <ModalWrapper {...args} />,
   args: {
+    // @ts-ignore
     title: "Edit Profile",
+    // @ts-ignore
     description: "Make changes to your profile here. Click save when you're done."
   },
 };
