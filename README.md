@@ -50,8 +50,8 @@ A polished, frontend-only prototype of an AI chat interface built with React, Ty
 
 ### Implementation Notes
 -   **State Management**: Used React `useState` and `useEffect` for local state. `useChat` hook manages the message flow and mock streaming.
--   **Mock Data**: `client/src/lib/data.ts` contains static data for models and templates to simulate a backend.
--   **Theming**: `next-themes` handles the light/dark mode persistence and class switching.
+-   **Mock API Setup**: `client/src/lib/data.ts` serves as the mock database, providing static data for models and templates to simulate backend responses without a real server.
+-   **Theming**: Custom `ThemeProvider` handles light/dark mode persistence and class switching.
 -   **Components**: Built reusable UI components (Button, Slider, Select) using `radix-ui` primitives for accessibility.
 
 ### Known Limitations
