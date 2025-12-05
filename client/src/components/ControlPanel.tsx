@@ -35,6 +35,7 @@ export function ControlPanel({ parameters, onUpdate }: ControlPanelProps) {
           value={[parameters.temperature]}
           onValueChange={(value) => onUpdate({ temperature: value[0] })}
           className="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4"
+          aria-label="Temperature slider"
         />
       </div>
 
@@ -61,6 +62,7 @@ export function ControlPanel({ parameters, onUpdate }: ControlPanelProps) {
           value={[parameters.maxTokens]}
           onValueChange={(value) => onUpdate({ maxTokens: value[0] })}
           className="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4"
+          aria-label="Max tokens slider"
         />
       </div>
 
@@ -87,6 +89,7 @@ export function ControlPanel({ parameters, onUpdate }: ControlPanelProps) {
           value={[parameters.topP]}
           onValueChange={(value) => onUpdate({ topP: value[0] })}
           className="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4"
+          aria-label="Top P slider"
         />
       </div>
     </div>

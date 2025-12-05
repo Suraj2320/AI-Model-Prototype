@@ -72,6 +72,7 @@ export function PromptEditor({ input, setInput, onSend, isLoading }: PromptEdito
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Message AI..."
+          aria-label="Message input"
           className="min-h-[20px] max-h-[200px] w-full resize-none bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-2 py-2.5 text-base md:text-sm overflow-y-auto scrollbar-hide"
           rows={1}
         />
@@ -80,7 +81,7 @@ export function PromptEditor({ input, setInput, onSend, isLoading }: PromptEdito
              <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground h-9 w-9 rounded-full hidden md:flex">
+                        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground h-9 w-9 rounded-full hidden md:flex" aria-label="Use voice input">
                             <Mic className="h-5 w-5" />
                         </Button>
                     </TooltipTrigger>
@@ -91,6 +92,7 @@ export function PromptEditor({ input, setInput, onSend, isLoading }: PromptEdito
                 onClick={onSend}
                 disabled={!input.trim() || isLoading}
                 size="icon"
+                aria-label="Send message"
                 className="h-9 w-9 rounded-full shrink-0 transition-all"
             >
                 <SendHorizontal className="h-5 w-5" />

@@ -71,6 +71,7 @@ export function ChatMessage({ message, isLast }: ChatMessageProps) {
                                 size="icon"
                                 className="h-6 w-6"
                                 onClick={() => copyToClipboard(String(children).replace(/\n$/, ''))}
+                                aria-label="Copy code"
                             >
                                 <Copy className="h-3 w-3" />
                             </Button>
@@ -104,6 +105,7 @@ export function ChatMessage({ message, isLast }: ChatMessageProps) {
                 size="icon"
                 className="h-8 w-8 text-muted-foreground hover:text-foreground"
                 onClick={() => copyToClipboard(message.content)}
+                aria-label="Copy message"
                >
                  <Copy className="h-4 w-4" />
                </Button>
@@ -111,14 +113,15 @@ export function ChatMessage({ message, isLast }: ChatMessageProps) {
                 variant="ghost"
                 size="icon"
                 className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                aria-label="Regenerate response"
                >
                  <RotateCw className="h-4 w-4" />
                </Button>
                <div className="flex items-center gap-1 ml-auto">
-                   <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+                   <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground" aria-label="Thumbs up">
                        <ThumbsUp className="h-4 w-4" />
                    </Button>
-                   <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+                   <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground" aria-label="Thumbs down">
                        <ThumbsDown className="h-4 w-4" />
                    </Button>
                </div>

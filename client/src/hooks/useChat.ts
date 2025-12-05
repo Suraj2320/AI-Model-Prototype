@@ -33,19 +33,37 @@ export function useChat() {
     setIsLoading(true);
     
     // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+    await new Promise(resolve => setTimeout(resolve, 600));
     
     const randomResponse = MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
+    const messageId = crypto.randomUUID();
     
+    // Create initial empty message
     const newMessage: Message = {
-      id: crypto.randomUUID(),
+      id: messageId,
       role: 'assistant',
-      content: randomResponse,
+      content: '',
       timestamp: Date.now(),
       model: modelId
     };
 
     setMessages(prev => [...prev, newMessage]);
+
+    // Simulate streaming
+    let currentContent = '';
+    const chars = randomResponse.split('');
+    
+    for (const char of chars) {
+        currentContent += char;
+        setMessages(prev => prev.map(msg => 
+            msg.id === messageId 
+                ? { ...msg, content: currentContent }
+                : msg
+        ));
+        // Random delay between keystrokes for realism
+        await new Promise(resolve => setTimeout(resolve, 15 + Math.random() * 30));
+    }
+    
     setIsLoading(false);
   }, []);
 

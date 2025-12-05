@@ -83,7 +83,7 @@ export function Sidebar({ parameters, onUpdateParameters, onClearChat, className
         </div>
         
         <div className="flex items-center justify-between pt-2 mt-2 border-t border-sidebar-border/50">
-             <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-foreground px-0">
+             <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-foreground px-0" aria-label="User settings">
                 <div className="h-6 w-6 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-[10px] text-white font-bold">
                     JS
                 </div>
@@ -103,7 +103,7 @@ export function Sidebar({ parameters, onUpdateParameters, onClearChat, className
       {/* Mobile Trigger */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="md:hidden fixed top-3 left-3 z-50 h-10 w-10 bg-background/80 backdrop-blur-md border border-border shadow-sm rounded-lg">
+          <Button variant="ghost" size="icon" className="md:hidden fixed top-3 left-3 z-50 h-10 w-10 bg-background/80 backdrop-blur-md border border-border shadow-sm rounded-lg" aria-label="Open sidebar">
             <LayoutGrid className="h-5 w-5" />
           </Button>
         </SheetTrigger>
