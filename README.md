@@ -43,8 +43,7 @@ A polished, frontend-only prototype of an AI chat interface built with React, Ty
 #### Desktop (Dark Mode)
 ![Desktop Dark](client/public/screenshots/desktop-dark.png)
 
-#### Mobile View
-![Mobile](client/public/screenshots/mobile.png)
+
 
 ## Development
 
