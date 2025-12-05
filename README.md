@@ -143,34 +143,4 @@ npm run storybook
     /pages        # Routes
     /stories      # Storybook stories
     /types        # TypeScript interfaces
-```
-
----
-
-## 🎯 Outcome
-
-This project demonstrates:
-- Scalable component architecture
-- Real-world UX & UI patterns
-- Fast development workflow
-- Modern frontend engineering
-
----
-
-## 🚧 Future Enhancements (Roadmap)
-| Planned Feature |
-|----------------|
-| Real AI API integration |
-| Persistent chat history (localStorage / IndexedDB) |
-| File upload preview |
-| Conversation grouping in sidebar |
-
----
-
-## ✨ Additional Help
-If needed, I can provide:
-- 📐 **Figma UI Design file**
-- 🔧 **Next.js version of this project**
-- 📄 **Project presentation PDF for interview**
-- 🌍 **Deployment setup**
 
