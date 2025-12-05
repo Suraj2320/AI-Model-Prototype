@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { Menu, Plus, MessageSquare, Settings, Github, LayoutGrid, X } from "lucide-react";
 import { ControlPanel } from "./ControlPanel";
@@ -108,6 +108,10 @@ export function Sidebar({ parameters, onUpdateParameters, onClearChat, className
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="p-0 w-[280px] border-r-0">
+            <div className="sr-only">
+                <SheetTitle>Menu</SheetTitle>
+                <SheetDescription>Navigation sidebar</SheetDescription>
+            </div>
           <SidebarContent />
         </SheetContent>
       </Sheet>
