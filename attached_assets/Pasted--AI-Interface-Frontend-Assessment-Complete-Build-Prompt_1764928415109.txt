@@ -1,0 +1,613 @@
+# AI Interface Frontend Assessment - Complete Build Prompt
+
+## Project Overview
+Build a polished, frontend-only prototype of an AI chat interface (similar to ChatGPT, Claude, Gemini) that showcases modern UI/UX design and React/TypeScript development skills.
+
+## Tech Stack (REQUIRED)
+- **Framework**: Next.js OR React.js (functional components only)
+- **Language**: TypeScript with strict mode enabled
+- **Styling**: Tailwind CSS
+- **Deployment**: Netlify, Vercel, or GitHub Pages
+
+---
+
+## Phase 1: Research & Planning
+
+### AI Platforms to Review (Choose 3-5)
+- OpenAI Playground
+- Hugging Face Spaces
+- Anthropic Claude UI
+- Microsoft Copilot Lab
+- Google Gemini
+- Perplexity AI
+- Any other AI chat interface
+
+### Research Documentation (for README)
+For each platform reviewed, write **1-2 sentences** summarizing:
+- What makes their interface intuitive
+- Key standout features you noticed
+- Any unique interaction patterns
+
+### Feature Selection
+Choose **4-6 features** from your research to implement. Examples:
+- Model/temperature selection
+- Conversation history sidebar
+- Copy/regenerate response buttons
+- Syntax highlighting for code
+- Streaming text effect
+- Token counter
+- Export conversation
+- Prompt templates/examples
+
+---
+
+## Phase 2: Design (Figma/Adobe XD)
+
+### Create Mockups for:
+1. **Desktop view** (1440px width)
+2. **Tablet view** (768px width)
+3. **Mobile view** (375px width)
+
+### Design System Using Tailwind
+Document your choices:
+- **Color Palette**: 
+  - Light mode: background, text, accent colors
+  - Dark mode: background, text, accent colors
+- **Typography**: Font families, sizes (text-sm, text-base, text-lg, etc.)
+- **Spacing**: Consistent padding/margin values (p-4, m-6, etc.)
+- **Component Styles**: Buttons, inputs, cards, etc.
+
+### Map Tailwind Tokens
+For each mockup element, specify the exact Tailwind classes you'll use:
+- Example: "Header uses `bg-gray-900 text-white p-4 shadow-lg`"
+
+### Design Section in README
+Include a "Design" section explaining:
+- Your design decisions and why
+- How Tailwind tokens map to mockup elements
+- Screenshots or links to Figma/XD files
+
+---
+
+## Phase 3: Development
+
+### Required Components
+
+#### 1. Model Selector
+```typescript
+// Dropdown or sidebar to pick among "models"
+// Examples: GPT-3.5, GPT-4, Claude, Gemini (dummy names OK)
+interface Model {
+  id: string;
+  name: string;
+  description?: string;
+}
+```
+
+#### 2. Prompt Editor
+```typescript
+// Text area with:
+// - Save/load templates (dummy JSON data)
+// - Clear button
+// - Character/token counter (optional)
+// - Placeholder text
+```
+
+#### 3. Control Panel
+```typescript
+// Sliders/inputs for parameters:
+interface Parameters {
+  temperature: number; // 0-1 or 0-2
+  maxTokens: number;   // e.g., 100-4000
+  topP?: number;       // optional
+}
+```
+
+#### 4. Chat/Output Area
+```typescript
+// Displays prompt + response
+// Features:
+// - "Copy" button for responses
+// - "Reload" button to regenerate
+// - Include dummy "JSON" actions in response
+// - Support markdown formatting
+// - Code syntax highlighting (use a library like react-syntax-highlighter)
+
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+}
+```
+
+#### 5. Theme Toggle
+```typescript
+// Light/dark mode switch
+// Persist choice in localStorage
+// Use Tailwind's dark: modifier
+```
+
+#### 6. Responsive Layout
+```typescript
+// Mobile: stacked layout, hamburger menu
+// Tablet: side panel collapses
+// Desktop: full sidebar + main area
+```
+
+#### 7. Data & State Management
+```typescript
+// Fetch "models" and "templates" from mock API
+// Can use:
+// - /pages/api route in Next.js with dummy JSON
+// - /public/data.json file
+// - Local state with dummy data
+
+// Display loading/error states with proper UI feedback
+```
+
+---
+
+## Phase 4: Accessibility & UX Polish
+
+### Accessibility Requirements
+- Keyboard-navigable components
+- Focus states clearly visible
+- ARIA labels on interactive elements
+- Proper heading hierarchy (h1, h2, h3)
+- Alt text for any images/icons
+- Color contrast meets WCAG AA standards
+
+### Animations & Polish
+- Hover/focus animations using CSS transitions or Framer Motion
+- Smooth transitions between light/dark themes
+- Loading spinners for "API calls"
+- Typing animation for responses (optional but impressive)
+- Smooth scrolling in chat area
+
+---
+
+## Phase 5: Component Library & Storybook
+
+### Storybook Setup
+1. Install Storybook for React
+2. Create stories for at least **4 core components**:
+   - Button (primary, secondary, icon variants)
+   - Slider (for temperature/tokens)
+   - Modal (for settings or info)
+   - ChatBubble (user and assistant variants)
+
+### Each Story Should Show:
+- Default state
+- Hover state
+- Disabled state
+- Different variants/sizes
+- Dark mode version
+
+---
+
+## File Structure
+
+```
+/project-root
+├── /public
+│   └── /data
+│       ├── models.json
+│       └── templates.json
+├── /src or /app
+│   ├── /components
+│   │   ├── /ui (reusable: Button, Input, Slider, etc.)
+│   │   ├── ModelSelector.tsx
+│   │   ├── PromptEditor.tsx
+│   │   ├── ControlPanel.tsx
+│   │   ├── ChatArea.tsx
+│   │   ├── ChatMessage.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── Layout.tsx
+│   ├── /hooks
+│   │   ├── useTheme.ts
+│   │   ├── useLocalStorage.ts
+│   │   └── useChat.ts
+│   ├── /types
+│   │   └── index.ts (all TypeScript interfaces)
+│   ├── /lib or /utils
+│   │   ├── api.ts (mock API calls)
+│   │   └── helpers.ts
+│   └── /pages or /app (Next.js routing)
+│       ├── index.tsx (main chat page)
+│       └── /api (if using Next.js API routes)
+│           └── chat.ts (mock endpoint)
+├── /stories (Storybook)
+│   ├── Button.stories.tsx
+│   ├── Slider.stories.tsx
+│   ├── Modal.stories.tsx
+│   └── ChatBubble.stories.tsx
+├── .storybook/
+├── tailwind.config.js
+├── tsconfig.json (strict mode ON)
+├── package.json
+└── README.md
+```
+
+---
+
+## TypeScript Configuration
+
+### tsconfig.json (CRITICAL)
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  }
+}
+```
+
+---
+
+## Mock Data Examples
+
+### /public/data/models.json
+```json
+{
+  "models": [
+    {
+      "id": "gpt-3.5",
+      "name": "GPT-3.5 Turbo",
+      "description": "Fast and efficient for most tasks",
+      "maxTokens": 4096
+    },
+    {
+      "id": "gpt-4",
+      "name": "GPT-4",
+      "description": "Most capable model for complex tasks",
+      "maxTokens": 8192
+    },
+    {
+      "id": "claude-3",
+      "name": "Claude 3",
+      "description": "Balanced performance and speed",
+      "maxTokens": 100000
+    }
+  ]
+}
+```
+
+### /public/data/templates.json
+```json
+{
+  "templates": [
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "prompt": "Review this code and suggest improvements:\n\n```\n// paste code here\n```"
+    },
+    {
+      "id": "explain",
+      "name": "Explain Concept",
+      "prompt": "Explain [concept] in simple terms with examples."
+    },
+    {
+      "id": "debug",
+      "name": "Debug Help",
+      "prompt": "I'm getting this error: [error]. Here's my code: [code]. How do I fix it?"
+    }
+  ]
+}
+```
+
+---
+
+## README.md Structure (REQUIRED)
+
+### 1. Research Section
+```markdown
+## Research
+
+### Platforms Reviewed
+1. **ChatGPT**: Clean interface with conversation history sidebar. Standout feature: regenerate response button.
+2. **Claude**: Minimalist design with focus on the conversation. Standout: artifact system for code.
+3. **Hugging Face**: Model playground with extensive parameter controls. Standout: temperature slider visualization.
+
+### Features Chosen for Implementation
+1. Model selector dropdown
+2. Temperature and max tokens sliders
+3. Dark/light theme toggle
+4. Copy response button
+5. Conversation history
+6. Template system for common prompts
+```
+
+### 2. Design Section
+```markdown
+## Design
+
+[Link to Figma/XD mockups]
+
+### Design Decisions
+- **Color Palette**: Used soft grays for light mode and deep blues for dark mode to reduce eye strain
+- **Typography**: Inter font family for modern, clean look
+- **Layout**: Sidebar + main area for desktop, collapsible for mobile
+
+### Tailwind Token Mapping
+- Header: `bg-slate-900 dark:bg-slate-950 text-white p-4`
+- Sidebar: `w-64 bg-gray-50 dark:bg-gray-900 border-r`
+- Chat messages: `p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm`
+```
+
+### 3. Development Section
+```markdown
+## Development
+
+### Tech Stack
+- Next.js 14 with App Router
+- TypeScript (strict mode)
+- Tailwind CSS
+- Framer Motion (animations)
+- React Syntax Highlighter (code blocks)
+
+### Implementation Notes
+- Used React Context for theme management
+- localStorage for persisting user preferences
+- Custom hooks for chat state management
+- Mock API using Next.js API routes
+
+### Known Limitations
+- No actual AI integration (mock responses only)
+- Limited to client-side state (no database)
+- Template system simplified for demo purposes
+```
+
+### 4. Installation & Setup
+```markdown
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+\`\`\`bash
+git clone [your-repo-url]
+cd [project-name]
+npm install
+\`\`\`
+
+### Development
+\`\`\`bash
+npm run dev
+\`\`\`
+Open http://localhost:3000
+
+### Storybook
+\`\`\`bash
+npm run storybook
+\`\`\`
+Open http://localhost:6006
+
+### Build
+\`\`\`bash
+npm run build
+npm start
+\`\`\`
+```
+
+### 5. Additional Sections
+```markdown
+## Mock API Setup
+Located in `/pages/api/` or `/public/data/`
+
+## Storybook
+View component library at [deployed storybook URL]
+
+## Deployment
+Live demo: [your-deployed-url]
+
+## Screenshots
+[Include 3-4 screenshots showing key features]
+
+## Future Enhancements
+- Real AI API integration
+- User authentication
+- Conversation export to PDF
+- Multi-language support
+```
+
+---
+
+## Submission Checklist
+
+### 1. Live URL
+- [ ] Deploy to Netlify/Vercel/GitHub Pages
+- [ ] Test all features on deployed version
+- [ ] Verify responsive design on mobile
+
+### 2. GitHub Repository
+- [ ] Full TypeScript source code (strict mode)
+- [ ] README.md with all three sections (Research, Design, Development)
+- [ ] Design mockup link or screenshots in README
+- [ ] Mock API setup documented
+- [ ] Storybook folder with component stories
+- [ ] .gitignore (exclude node_modules, .next, etc.)
+- [ ] package.json with all dependencies listed
+
+### 3. Figma/XD File
+- [ ] Link in README or embedded screenshots
+- [ ] Shows desktop, tablet, mobile views
+- [ ] Design system documented
+
+---
+
+## UI/UX Best Practices for Realistic Design
+
+### Modern AI Interface Patterns
+1. **Conversation Flow**: Messages alternate between user and assistant with clear visual distinction
+2. **Input Area**: Fixed at bottom with auto-expanding textarea
+3. **Streaming Effect**: Simulate typing animation for responses (use setInterval to reveal text gradually)
+4. **Action Buttons**: Copy, regenerate, thumbs up/down near each response
+5. **Model Badge**: Show active model name near input
+6. **Token Counter**: Display estimated tokens used/remaining
+7. **Sidebar**: Collapsible conversation history or quick settings
+8. **Empty State**: Helpful starter prompts when no conversation exists
+
+### Color Scheme Suggestions
+**Light Mode:**
+- Background: `bg-gray-50`
+- Cards: `bg-white`
+- Text: `text-gray-900`
+- Accent: `bg-blue-600` for buttons
+
+**Dark Mode:**
+- Background: `bg-gray-950`
+- Cards: `bg-gray-900`
+- Text: `text-gray-100`
+- Accent: `bg-blue-500` for buttons
+
+### Animation Examples (Framer Motion)
+```typescript
+// Fade in messages
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3 }}
+>
+  {message.content}
+</motion.div>
+
+// Theme toggle
+<motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  Toggle Theme
+</motion.button>
+```
+
+---
+
+## Example Feature: Streaming Text Effect
+
+```typescript
+const StreamingText = ({ text }: { text: string }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        setDisplayedText((prev) => prev + text[index]);
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 20); // Adjust speed here
+    
+    return () => clearInterval(interval);
+  }, [text]);
+  
+  return <p>{displayedText}</p>;
+};
+```
+
+---
+
+## Quality Checklist
+
+### Code Quality
+- [ ] No TypeScript `any` types (strict mode enforced)
+- [ ] All props properly typed with interfaces
+- [ ] Consistent code formatting (use Prettier)
+- [ ] Meaningful component and variable names
+- [ ] Comments for complex logic
+
+### UI/UX Quality  
+- [ ] Smooth animations (no janky transitions)
+- [ ] Fast load time (<3 seconds)
+- [ ] Works on Chrome, Firefox, Safari
+- [ ] Mobile-friendly (touch-friendly buttons, readable text)
+- [ ] Loading states for all async operations
+- [ ] Error boundaries for error handling
+
+### Accessibility
+- [ ] Keyboard navigation works throughout
+- [ ] Screen reader friendly (test with NVDA/VoiceOver)
+- [ ] Sufficient color contrast (check with WebAIM tool)
+- [ ] Focus indicators visible
+- [ ] Semantic HTML (main, nav, article, etc.)
+
+---
+
+## Deadline: Within 3 Days
+
+### Day 1: Research + Design
+- Review 3-5 AI platforms
+- Create Figma/XD mockups
+- Write research summary
+- Choose 4-6 features
+
+### Day 2: Development
+- Set up Next.js/React + TypeScript project
+- Build core components
+- Implement features
+- Add theme toggle and responsive design
+- Set up mock data/API
+
+### Day 3: Polish + Deploy
+- Set up Storybook (4+ components)
+- Add animations and polish
+- Write comprehensive README
+- Deploy to Vercel/Netlify
+- Test on multiple devices
+- Submit
+
+---
+
+## Bonus Points (Optional)
+
+- Markdown rendering in chat (use react-markdown)
+- Code syntax highlighting with copy button
+- Conversation export (JSON/TXT download)
+- Keyboard shortcuts (e.g., Cmd+K to focus input)
+- Search through conversation history
+- Voice input (Web Speech API)
+- Progressive Web App (PWA) support
+
+---
+
+## Resources
+
+### Tailwind CSS
+- https://tailwindcss.com/docs
+- https://tailwindui.com/ (components reference)
+
+### TypeScript
+- https://www.typescriptlang.org/docs/handbook/react.html
+
+### Animation Libraries
+- Framer Motion: https://www.framer.com/motion/
+- React Spring: https://www.react-spring.dev/
+
+### Syntax Highlighting
+- react-syntax-highlighter: https://github.com/react-syntax-highlighter/react-syntax-highlighter
+
+### Storybook
+- https://storybook.js.org/docs/react/get-started/install
+
+---
+
+## Final Note
+Focus on creating a **polished, professional prototype** that demonstrates your frontend skills. The AI doesn't need to actually work—mock responses are fine. What matters is the **user experience, code quality, and attention to detail**.
